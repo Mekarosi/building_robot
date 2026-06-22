@@ -1,6 +1,16 @@
 <?xml version="1.0" ?>
 <sdf version="1.10">
     <world name="car_world">
+    <!-- Moving Forward-->
+<plugin filename="gz-sim-triggered-publisher-system"
+        name="gz::sim::systems::TriggeredPublisher">
+    <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+        <match field="data">16777235</match>
+    </input>
+    <output type="gz.msgs.Twist" topic="/cmd_vel">
+        linear: {x: 0.5}, angular: {z: 0.0}
+    </output>
+</plugin>
         <physics name="1ms" type="ignored">
             <max_step_size>0.001</max_step_size>
             <real_time_factor>1.0</real_time_factor>
