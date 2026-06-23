@@ -61,6 +61,9 @@
         <plugin filename="gz-sim-imu-system"
             name="gz::sim::systems::Imu">
         </plugin>
+        <plugin filename="gz-sim-contact-system"
+            name="gz::sim::systems::Contact">
+        </plugin>
 
         <light type="directional" name="sun">
             <cast_shadows>true</cast_shadows>
@@ -290,6 +293,7 @@
     <topic>cmd_vel</topic>
 </plugin>
 </model>
+  <!--wall-->
 <model name='wall'>
     <static>true</static>
     <pose>5 0 0 0 0 0</pose><!--pose relative to the world-->
@@ -314,7 +318,19 @@
                 </box>
             </geometry>
         </collision>
+        <sensor name='sensor_contact' type='contact'>
+            <contact>
+                <collision>collision</collision>
+            </contact>
+        </sensor>
     </link>
 </model>
+<plugin filename="gz-sim-touchplugin-system"
+    name="gz::sim::systems::TouchPlugin">
+    <target>vehicle_blue</target>
+    <namespace>wall</namespace>
+    <time>0.001</time>
+    <enabled>true</enabled>
+</plugin>
     </world>
 </sdf>
