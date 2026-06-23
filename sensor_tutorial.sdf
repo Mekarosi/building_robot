@@ -41,6 +41,16 @@
     <output type="gz.msgs.Twist" topic="/cmd_vel">
           linear: {x: 0.0}, angular: {z: -0.5}
     </output>
+
+<plugin filename="gz-sim-triggered-publisher-system"
+    name="gz::sim::systems::TriggeredPublisher">
+        <input type="gz.msgs.Boolean" topic="/wall/touched">
+            <match>data: true</match>
+        </input>
+        <output type="gz.msgs.Twist" topic="/cmd_vel">
+            linear: {x: 0.0}, angular: {z: 0.0}
+        </output>
+</plugin>
 </plugin>
         <physics name="1ms" type="ignored">
             <max_step_size>0.001</max_step_size>
@@ -324,13 +334,14 @@
             </contact>
         </sensor>
     </link>
-</model>
-<plugin filename="gz-sim-touchplugin-system"
+    <plugin filename="gz-sim-touchplugin-system"
     name="gz::sim::systems::TouchPlugin">
     <target>vehicle_blue</target>
     <namespace>wall</namespace>
     <time>0.001</time>
     <enabled>true</enabled>
 </plugin>
+</model>
+
     </world>
 </sdf>
