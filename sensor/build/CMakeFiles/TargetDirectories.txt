@@ -1,0 +1,3 @@
+/home/mekarosi/ros2_kilted/src/gazebo/sensor/build/CMakeFiles/lidar_node.dir
+/home/mekarosi/ros2_kilted/src/gazebo/sensor/build/CMakeFiles/edit_cache.dir
+/home/mekarosi/ros2_kilted/src/gazebo/sensor/build/CMakeFiles/rebuild_cache.dir
